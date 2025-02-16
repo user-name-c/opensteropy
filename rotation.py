@@ -10,6 +10,13 @@ def rotate_plane(plane, axis, angle):
     plane_rot = Plane.from_vector_pole(pole_vector_rot)
     return plane_rot
 
+def rotate_line(line, axis, angle):
+    axis_vextor = axis.to_vector()
+    line_vector = line.to_vector()
+    line_vector_rot = rotate_vector(line_vector, axis_vextor, -angle)
+    line_rot = Axis.from_vector(line_vector_rot)
+    return line_rot
+
 def rotate_vector(vector, axis, angle):
     angle = np.radians(angle)
     axis = axis / np.linalg.norm(axis)  # Asegurar que el eje es unitario
