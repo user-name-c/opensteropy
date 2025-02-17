@@ -19,6 +19,9 @@ class Dipdir:
         V_x, V_y, V_z = vector
         dip = np.degrees(np.arcsin(V_z))
         dip_dir = np.degrees(np.arctan2(V_x, V_y))
+        if dip < 0:
+            dip = -dip
+            dip_dir -= 180        
         if dip_dir < 0:
             dip_dir += 360  # Asegurar que esté entre 0 y 360°
         return dip_dir, dip
